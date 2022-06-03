@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<!DOCTYPE bundle SYSTEM "eosrsrcbundle.dtd">
+<bundle>
+    <name>EOSRSRCBUNDLE</name>
+    <texdb>
+        <name>TEXTUREDB</name>
+        <tex>
+            <name>publisher</name>
+            <filename>publisher.gl</filename>
+            <width>256</width>
+            <height>128</height>
+            <colorformat>TextureFormatGL_P8_RGBA_8888</colorformat>
+        </tex>
+    </texdb>
+    <texatlasdb>
+        <name>TEXATLASDB</name>
+        <texatlas>
+            <name>publisher</name>
+            <filename>publisher.bin</filename>
+            <texname>publisher</texname>
+        </texatlas>
+    </texatlasdb>
+    <spritedb>
+        <name>SPRITEDB</name> 
+        <sprite>
+            <name>publisher</name>
+            <filename>publisher_sprite.bin</filename>
+            <texatlasnamelist>
+                <name>publisher</name>
+            </texatlasnamelist>
+        </sprite>
+    </spritedb>
+    <spranimdb>
+        <name>SPRITEANIMDB</name> 
+        <spranim>
+            <name>publisher</name>
+            <filename>publisher_anim.bin</filename>
+            <spritename>publisher</spritename>
+        </spranim>
+    </spranimdb>
+</bundle>
+
+

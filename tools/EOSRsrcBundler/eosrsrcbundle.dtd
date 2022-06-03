@@ -1,0 +1,28 @@
+<!ELEMENT bundle (name, texdb?, texatlasdb?, sprtexatlasmappingdb?, spritedb?, spranimdb?)>
+<!ELEMENT texdb (name, tex+)>
+<!ELEMENT tex (name, filename, width, height, colorformat, minmipmapfilter?, magmipmapfilter?, wraps?, wrapst?, texenvmode?)>
+<!ELEMENT texatlasdb (name, texatlas+)>
+<!ELEMENT texatlas (name, filename, texname?)>
+<!ELEMENT sprtexatlasmappingdb (name, sprtexatlasmapping+)>
+<!ELEMENT sprtexatlasmapping (name, filename)>
+<!ELEMENT spritedb (name, sprite+)>
+<!ELEMENT sprite (name, filename, texatlasnamelist?, mappingname?)>
+<!ELEMENT spranimdb (name, spranim+)>
+<!ELEMENT spranim (name, filename, spritename?)>
+<!ELEMENT texatlasnamelist (name+)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT filename (#PCDATA)>
+<!ELEMENT texname (#PCDATA)>
+<!ELEMENT spritename (#PCDATA)>
+<!ELEMENT mappingname (#PCDATA)>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT width (#PCDATA)>
+<!ELEMENT height (#PCDATA)>
+<!ELEMENT colorformat (#PCDATA)>
+<!ELEMENT minmipmapfilter (#PCDATA)>
+<!ELEMENT magmipmapfilter (#PCDATA)>
+<!ELEMENT wraps (#PCDATA)>
+<!ELEMENT wrapt (#PCDATA)>
+<!ELEMENT texenvmode (#PCDATA)>
+
+

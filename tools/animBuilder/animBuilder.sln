@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "animBuilder", "animBuilder.vcproj", "{42385D7E-86A0-4437-B9FF-06B1F0C1478E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42385D7E-86A0-4437-B9FF-06B1F0C1478E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{42385D7E-86A0-4437-B9FF-06B1F0C1478E}.Debug|Win32.Build.0 = Debug|Win32
+		{42385D7E-86A0-4437-B9FF-06B1F0C1478E}.Release|Win32.ActiveCfg = Release|Win32
+		{42385D7E-86A0-4437-B9FF-06B1F0C1478E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,144 @@
+/******************************************************************************
+ *
+ * File: TextureState.h
+ * Author: Benjamin Lee
+ * Developed by: 2n Productions
+ *
+ * Copyright (C) 2009 2n Productions, All Rights Reserved.
+ *
+ * Texture State
+ * 
+ *****************************************************************************/
+
+#ifndef __TEXTURE_STATE_H__
+#define __TEXTURE_STATE_H__
+
+#include "Graphics.h"
+#include "Texture.h"
+
+#define	NUM_TEXTURE_UNITS		4
+
+class TextureState : EOSObject
+{
+public:
+	typedef enum
+	{
+		TEXTURE_MIPMAP_NEAREST = 0,
+		TEXTURE_MIPMAP_LINEAR,
+		TEXTURE_MIPMAP_NEAREST_NEAREST,
+		TEXTURE_MIPMAP_NEAREST_LINEAR,
+		TEXTURE_MIPMAP_LINEAR_NEAREST,
+		TEXTURE_MIPMAP_LINEAR_LINEAR,
+		TEXTURE_MIPMAP_LAST,
+		TEXTURE_MIPMAP_ILLEGAL = TEXTURE_MIPMAP_LAST,
+	} TEXTURE_MIPMAP;
+
+	typedef enum
+	{
+		TEXTURE_WRAP_CLAMP = 0,
+		TEXTURE_WRAP_REPEAT,
+		TEXTURE_WRAP_CLAMP_BORDER,
+		TEXTURE_WRAP_CLAMP_EDGE,
+		TEXTURE_WRAP_LAST,
+		TEXTURE_WRAP_ILLEGAL = TEXTURE_WRAP_LAST,
+	} TEXTURE_WRAP;
+
+	typedef enum
+	{
+		TEXTURE_ENV_MODE_REPLACE = 0,
+		TEXTURE_ENV_MODE_MODULATE,
+		TEXTURE_ENV_MODE_DECAL,
+		TEXTURE_ENV_MODE_BLEND,
+		TEXTURE_ENV_MODE_ADD,
+		TEXTURE_ENV_MODE_COMBINE,
+		TEXTURE_ENV_MODE_LAST,
+		TEXTURE_ENV_MODE_ILLEGAL = TEXTURE_ENV_MODE_LAST,
+	} TEXTURE_ENV_MODE;
+
+	typedef enum
+	{
+		TEXTURE_COMBINE_REPLACE = 0,
+		TEXTURE_COMBINE_MODULATE,
+		TEXTURE_COMBINE_ADD,
+		TEXTURE_COMBINE_ADD_SIGNED,
+		TEXTURE_COMBINE_SUBTRACT,
+		TEXTURE_COMBINE_INTERPOLATE,
+		TEXTURE_COMBINE_DOT3_RGB,
+		TEXTURE_COMBINE_DOT3_RGBA,
+		TEXTURE_COMBINE_LAST,
+		TEXTURE_COMBINE_ILLEGAL = TEXTURE_COMBINE_LAST,
+	} TEXTURE_COMBINE;
+
+	typedef enum
+	{
+		TEXTURE_COMBINE_SRC_TEXTURE = 0,
+		TEXTURE_COMBINE_SRC_PRIMARY_COLOR,
+		TEXTURE_COMBINE_SRC_CONSTANT,
+		TEXTURE_COMBINE_SRC_PREVIOUS,
+		TEXTURE_COMBINE_SRC_LAST,
+		TEXTURE_COMBINE_SRC_ILLEGAL = TEXTURE_COMBINE_SRC_LAST,
+	} TEXTURE_COMBINE_SRC;
+
+	typedef enum
+	{
+		TEXTURE_COMBINE_OP_SRC_COLOR = 0,
+		TEXTURE_COMBINE_OP_ONE_MINUS_SRC_COLOR,
+		TEXTURE_COMBINE_OP_SRC_ALPHA,
+		TEXTURE_COMBINE_OP_ONE_MINUS_SRC_ALPHA,
+		TEXTURE_COMBINE_OP_LAST,
+		TEXTURE_COMBINE_OP_ILLEGAL = TEXTURE_COMBINE_OP_LAST,
+	} TEXTURE_COMBINE_OP;
+
+	typedef enum
+	{
+		TEXTURE_COMBINE_SCALE_ONE,
+		TEXTURE_COMBINE_SCALE_TWO,
+		TEXTURE_COMBINE_SCALE_FOUR,
+		TEXTURE_COMBINE_SCALE_LAST,
+		TEXTURE_COMBINE_SCALE_ILLEGAL = TEXTURE_COMBINE_SCALE_LAST,
+	} TEXTURE_COMBINE_SCALE;
+
+	TextureState();
+	~TextureState() {}
+
+	TextureState& operator=(const TextureState& rhs);
+	bool operator==(const TextureState& rhs);
+
+	void		bindToTexture(Texture* tex);
+
+	void		setDefaultValues(void);
+	void		setFromStateFlags(Uint32 flags);
+	void		apply(void);
+
+#ifdef _USE_OPENGL
+	static GLenum 		TEXTURE_ENV_MODE_To_GL_TEXTURE_ENV(TEXTURE_ENV_MODE mode);
+#endif /* _USE_OPENGL */
+
+	ColorRGBA				_borderColor;
+	ColorRGBA				_blendColor;
+
+	TEXTURE_WRAP			_wrapS;
+	TEXTURE_WRAP			_wrapT;
+
+	TEXTURE_MIPMAP			_minMipMapFilter;
+	TEXTURE_MIPMAP			_magMipMapFilter;
+
+	TEXTURE_ENV_MODE		_mode;
+
+	TEXTURE_COMBINE			_combineRGB;
+	TEXTURE_COMBINE			_combineAlpha;
+
+	TEXTURE_COMBINE_SRC		_combineSrcRGB[NUM_TEXTURE_UNITS];
+	TEXTURE_COMBINE_SRC		_combineSrcAlpha[NUM_TEXTURE_UNITS];
+	TEXTURE_COMBINE_OP		_combineOpRGB[NUM_TEXTURE_UNITS];
+	TEXTURE_COMBINE_OP		_combineOpAlpha[NUM_TEXTURE_UNITS];
+
+	TEXTURE_COMBINE_SCALE	_combineScaleRGB;
+	TEXTURE_COMBINE_SCALE	_combineScaleAlpha;
+
+	Texture*				_textureObj;
+};
+
+#endif /* __TEXTURE_STATE_H__ */
+
+
